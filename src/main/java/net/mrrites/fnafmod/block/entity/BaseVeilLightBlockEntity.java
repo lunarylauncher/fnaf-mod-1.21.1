@@ -1,5 +1,6 @@
 package net.mrrites.fnafmod.block.entity;
 
+import me.srrapero720.waterframes.common.block.DisplayBlock;
 import me.srrapero720.waterframes.common.network.packets.PausePacket;
 import net.irisshaders.iris.Iris;
 import net.minecraft.block.BlockState;
@@ -14,6 +15,9 @@ import foundry.veil.api.client.render.light.renderer.LightRenderer;
 import net.irisshaders.iris.api.v0.IrisApi;
 import net.mrrites.fnafmod.FNAFMOD;
 import me.srrapero720.waterframes.common.network.DisplayNetwork;
+
+
+
 public abstract class BaseVeilLightBlockEntity extends BlockEntity {
     protected LightRenderHandle<AreaLightData> lightHandle;
 
@@ -37,9 +41,10 @@ public abstract class BaseVeilLightBlockEntity extends BlockEntity {
         }
         AreaLightData light = lightHandle.getLightData();
         configureLight(light);
-
-        BlockPos blockPos1 = new BlockPos(-15, 20, -54); // x=100, y=64, z=200
-        DisplayNetwork.sendServer(new PausePacket(blockPos1, true, 60, true));
+        //ТУТ добавим установку паузы
+//        BlockPos blockPos1 = new BlockPos(-15, 20, -54); // x=100, y=64, z=200
+//        DisplayNetwork.sendServer(new PausePacket(blockPos1, true, 60, true));
+        //int tick = display.tile.data.tick;
         FNAFMOD.LOGGER.info("PausePacket");
 //        IrisApi.getInstance().getConfig().setShadersEnabledAndApply(false);
 //        FNAFMOD.LOGGER.info("SHADERS DISABLED");
@@ -61,6 +66,9 @@ public abstract class BaseVeilLightBlockEntity extends BlockEntity {
         if (lightHandle != null) {
             lightHandle.free();
             lightHandle = null;
+            //ТУТ продолжим воспроизведение видео с того же момента
+//            BlockPos blockPos1 = new BlockPos(-15, 20, -54); // x=100, y=64, z=200
+//            DisplayNetwork.sendServer(new PausePacket(blockPos1, false, 60, true));
 //            IrisApi.getInstance().getConfig().setShadersEnabledAndApply(true);
 //            FNAFMOD.LOGGER.info("SHADERS ENABLED");
 //            FNAFMOD.LOGGER.info(String.valueOf(Iris.getIrisConfig().getShaderPackName()));
